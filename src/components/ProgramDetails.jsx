@@ -59,6 +59,12 @@ const ProgramDetails = () => {
                     </section>
                 </div>
 
+                <div className="text-center mb-12">
+                    <Link to="/#programs" className="back-link" style={{ marginBottom: 0 }}>
+                        ← Return to Programs
+                    </Link>
+                </div>
+
                 <div className="program-cta glass-panel text-center">
                     <div className="glow-orb"></div>
                     <h2 className="cta-title">Is this the right path for you?</h2>
