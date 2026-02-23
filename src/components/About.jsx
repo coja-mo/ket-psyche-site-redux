@@ -8,6 +8,16 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
     const containerRef = useRef(null);
     const [activeTab, setActiveTab] = useState('who');
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 900);
+        };
+        handleResize(); // Initial check
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -34,8 +44,8 @@ const About = () => {
         return () => ctx.revert();
     }, [activeTab]); // Re-run simple animation on tab change
 
-    const renderContent = () => {
-        switch (activeTab) {
+    const renderContent = (tabToRender) => {
+        switch (tabToRender) {
             case 'who':
                 return (
                     <div className="tab-content-panel">
@@ -116,32 +126,49 @@ const About = () => {
                     </p>
                 </div>
 
-                {/* Interactive Deep Dive */}
+                {/* Interactive Deep Dive or Mobile Scroll */}
                 <div className="about-interactive">
-                    <nav className="about-tabs">
-                        <button
-                            className={`tab-btn ${activeTab === 'who' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('who')}
-                        >
-                            Who We Treat
-                        </button>
-                        <button
-                            className={`tab-btn ${activeTab === 'how' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('how')}
-                        >
-                            How We Work
-                        </button>
-                        <button
-                            className={`tab-btn ${activeTab === 'what' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('what')}
-                        >
-                            What We Offer
-                        </button>
-                    </nav>
+                    {isMobile ? (
+                        <div className="mobile-about-stack">
+                            <div className="glass-panel mobile-panel">
+                                {renderContent('who')}
+                            </div>
+                            <div className="glass-panel mobile-panel">
+                                {renderContent('how')}
+                            </div>
+                            <div className="glass-panel mobile-panel">
+                                {renderContent('what')}
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <nav className="about-tabs">
+                                <button
+                                    className={`tab-btn ${activeTab === 'who' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('who')}
+                                >
+                                    Who We Treat
+                                </button>
+                                <button
+                                    className={`tab-btn ${activeTab === 'how' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('how')}
+                                >
+                                    How We Work
+                                </button>
+                                <button
+                                    className={`tab-btn ${activeTab === 'what' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('what')}
+                                >
+                                    What We Offer
+                                </button>
+                            </nav>
 
-                    <div className="about-content-area glass-panel">
-                        {renderContent()}
-                    </div>
+                            <div className="about-content-area glass-panel">
+                                {/* Pass the activeTab state to renderContent when not overriden */}
+                                {renderContent(activeTab)}
+                            </div>
+                        </>
+                    )}
                 </div>
 
             </div>
