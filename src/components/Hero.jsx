@@ -58,7 +58,7 @@ const Hero = () => {
                     </svg>
                 </div>
 
-                <div className="hero-badge">Storytelling. Myth-Making. Soul-Tending.</div>
+                <div className="hero-badge">Storytelling. Meaning-Making. Soul-Tending.</div>
 
                 <h1 className="hero-title">
                     <div className="hero-title-line gradient-text">A Place Beyond</div>
