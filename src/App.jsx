@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import Programs from './components/Programs';
+import Therapies from './components/Therapies';
 import About from './components/About';
 import Library from './components/Library';
 import Contact from './components/Contact';
@@ -26,6 +27,7 @@ function App() {
           </a>
           <div className="nav-links">
             <a href="#programs" className="nav-link">Programs</a>
+            <a href="#therapies" className="nav-link">Therapies</a>
             <a href="#about" className="nav-link">Our Approach</a>
             <a href="#library" className="nav-link">Library</a>
             <button className="nav-cta">Reach Out</button>
@@ -36,6 +38,7 @@ function App() {
       <main style={{ flex: 1 }}>
         <Hero />
         <Programs />
+        <Therapies />
         <About />
         <Library />
         <Contact />

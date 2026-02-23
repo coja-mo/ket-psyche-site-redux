@@ -1,0 +1,280 @@
+/* ── Therapies Section ─────────────────────────── */
+.therapies-section {
+    padding: 8rem 2rem;
+    background-color: var(--bg-main);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .therapies-section {
+        padding: 5rem 1rem;
+    }
+}
+
+.therapies-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 5rem;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-cool);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.therapies-header h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.gradient-accent-cool {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cool) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.therapies-lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ── Constellation Grid ─────────────────────────── */
+.therapies-constellation {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .therapies-constellation {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .therapies-constellation {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .therapies-constellation {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Individual Orb ─────────────────────────── */
+.therapy-orb {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    background: rgba(20, 20, 25, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-height: 220px;
+}
+
+.therapy-orb:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--orb-accent);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px color-mix(in srgb, var(--orb-accent) 15%, transparent);
+}
+
+.therapy-orb:hover .orb-glow {
+    opacity: 0.25;
+}
+
+.therapy-orb:hover .orb-icon {
+    transform: scale(1.3);
+    color: var(--orb-accent);
+    text-shadow: 0 0 20px var(--orb-accent);
+}
+
+/* Radial glow behind each orb */
+.orb-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--orb-accent) 0%, transparent 70%);
+    opacity: 0.06;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 2.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+    line-height: 1;
+}
+
+.orb-name {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+}
+
+.orb-tagline {
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* ── Modal ───────────────────────────────────── */
+.therapy-modal-overlay {
+    animation: fadeInOverlay 0.3s ease forwards;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.therapy-modal-content {
+    max-width: 800px;
+    animation: slideUpModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideUpModal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.therapy-modal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.therapy-modal-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 15px currentColor);
+}
+
+.therapy-modal-header .article-title {
+    margin-top: 0;
+}
+
+.therapy-modal-tagline {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-weight: 300;
+    margin-top: 0.5rem;
+}
+
+.therapy-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.therapy-detail-block h4 {
+    font-size: 1.25rem;
+    color: var(--modal-accent, var(--accent-cool));
+    font-family: var(--font-heading);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.therapy-detail-block p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.therapy-key-points h4 {
+    font-size: 1.25rem;
+    color: var(--modal-accent, var(--accent-cool));
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.therapy-key-points ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 600px) {
+    .therapy-key-points ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+.therapy-key-points li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.therapy-key-points li::before {
+    content: '✦';
+    position: absolute;
+    left: 0.8rem;
+    top: 1rem;
+    color: var(--modal-accent, var(--accent-cool));
+    font-size: 0.75rem;
+}
