@@ -108,7 +108,7 @@ const About = () => {
                     <div className="glow-wrapper mini">
                         <div className="badge badge-clinical">Clinical Efficacy</div>
                         <span className="plus">+</span>
-                        <div className="badge">Lived Experience</div>
+                        <div className="badge">Grounded Expertise</div>
                     </div>
                     <h2 className="gradient-text">The Sacred Psyche Difference</h2>
                     <p className="about-lead-large">
