@@ -216,7 +216,7 @@ const Contact = () => {
                         <span style={{ color: 'var(--accent-glow)' }}>✧</span> Sacred Psyche
                     </div>
                     <div className="footer-links">
-                        <a href="#">Privacy Policy</a>
+                        <a href="/privacy-policy">Privacy Policy</a>
                         <a href="#">Terms of Service</a>
                         <a href="#">Client Portal</a>
                     </div>
