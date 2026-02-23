@@ -1,0 +1,120 @@
+.about-section {
+    padding: 8rem 2rem;
+    background-color: var(--bg-main);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-visual {
+        order: -1;
+    }
+}
+
+.glow-wrapper {
+    position: relative;
+}
+
+.glow-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    z-index: 0;
+    border-radius: 50%;
+}
+
+.about-image-placeholder {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 32px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.inner-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.4) 0%, transparent 50%);
+    opacity: 0.6;
+}
+
+.text-overlay {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    position: relative;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(10, 10, 12, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-glow);
+    width: max-content;
+}
+
+.badge-clinical {
+    color: var(--accent-cool);
+}
+
+.about-content h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.gradient-accent-cool {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cool) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-lead {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.about-text-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}

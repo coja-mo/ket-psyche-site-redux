@@ -1,0 +1,130 @@
+.contact-section {
+    padding: 6rem 2rem 0;
+    background-color: var(--bg-main);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-box {
+    padding: 4rem;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 6rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+}
+
+.contact-content {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+}
+
+.contact-content h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.contact-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.contact-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.contact-info span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.phone-link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.2s;
+}
+
+.phone-link:hover {
+    color: var(--accent-warm);
+}
+
+.contact-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.glow-orb {
+    position: absolute;
+    top: 50%;
+    right: -20%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 60%);
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+@media (max-width: 768px) {
+    .contact-box {
+        padding: 3rem 2rem;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--text-primary);
+}
