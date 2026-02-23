@@ -1,17 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap');
 
 :root {
-  /* Core Clinical Neutrals */
+  /* Core Clinical Neutrals (Dark – Default) */
   --bg-main: #0a0a0c;
   --bg-surface: rgba(255, 255, 255, 0.03);
   --bg-surface-hover: rgba(255, 255, 255, 0.08);
   --text-primary: #f8f9fa;
   --text-secondary: #a1a1aa;
-  
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --modal-bg: #0a0a0c;
+  --card-bg: rgba(20, 20, 25, 0.4);
+
   /* Psychedelic / Healing Accents */
-  --accent-glow: #6366f1; /* Indigo */
-  --accent-warm: #f59e0b; /* Amber/Gold */
-  --accent-cool: #14b8a6; /* Teal */
+  --accent-glow: #6366f1;
+  /* Indigo */
+  --accent-warm: #f59e0b;
+  /* Amber/Gold */
+  --accent-cool: #14b8a6;
+  /* Teal */
 
   /* Typography */
   --font-heading: 'Outfit', sans-serif;
@@ -20,11 +26,94 @@
   font-family: var(--font-body);
   color: var(--text-primary);
   background-color: var(--bg-main);
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Light Mode Overrides ────────────────────── */
+[data-theme='light'] {
+  --bg-main: #faf9f7;
+  --bg-surface: rgba(0, 0, 0, 0.03);
+  --bg-surface-hover: rgba(0, 0, 0, 0.06);
+  --text-primary: #1a1a1e;
+  --text-secondary: #5a5a64;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --modal-bg: #ffffff;
+  --card-bg: rgba(0, 0, 0, 0.03);
+  --accent-glow: #4f46e5;
+  --accent-warm: #d97706;
+  --accent-cool: #0d9488;
+}
+
+[data-theme='light'] body {
+  background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.06) 0%, var(--bg-main) 50%);
+}
+
+[data-theme='light'] .glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .navbar.scrolled {
+  background: rgba(250, 249, 247, 0.85);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .mobile-nav-overlay {
+  background: rgba(250, 249, 247, 0.95);
+}
+
+[data-theme='light'] .library-modal-overlay,
+[data-theme='light'] .therapy-modal-overlay {
+  background: rgba(250, 249, 247, 0.9);
+}
+
+[data-theme='light'] .library-modal-content,
+[data-theme='light'] .therapy-modal-content {
+  background: var(--modal-bg);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .modal-close-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .lib-card,
+[data-theme='light'] .therapy-orb,
+[data-theme='light'] .program-card {
+  background: var(--card-bg);
+  border-color: var(--border-subtle);
+}
+
+[data-theme='light'] .hero-section {
+  background: linear-gradient(to bottom, var(--bg-main) 0%, rgba(79, 70, 229, 0.04) 100%);
+}
+
+[data-theme='light'] .gradient-text {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-glow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='light'] .nav-cta {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .nav-cta:hover {
+  background: var(--text-primary);
+  color: var(--bg-main);
+}
+
+[data-theme='light'] .footer {
+  background: rgba(0, 0, 0, 0.03);
 }
 
 * {
@@ -40,7 +129,12 @@ body {
   background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, rgba(10, 10, 12, 1) 50%);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;

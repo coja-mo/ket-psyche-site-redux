@@ -5,7 +5,7 @@ import './Therapies.css';
 const therapiesData = [
     {
         id: 'emdr',
-        icon: '◎',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3" /><line x1="3" y1="3" x2="21" y2="21" strokeWidth="0" /></svg>),
         name: 'EMDR',
         tagline: 'Reprocess. Release. Rewire.',
         accentColor: '#6366f1',
@@ -24,7 +24,7 @@ const therapiesData = [
     },
     {
         id: 'somatic',
-        icon: '◈',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a7 7 0 0 0-7 7v4a7 7 0 0 0 14 0V9a7 7 0 0 0-7-7z" /><path d="M12 18v4" /><path d="M8 22h8" /><circle cx="12" cy="10" r="2" /></svg>),
         name: 'Somatic Experiencing',
         tagline: 'The body remembers. Let it speak.',
         accentColor: '#14b8a6',
@@ -43,7 +43,7 @@ const therapiesData = [
     },
     {
         id: 'functional-psych',
-        icon: '⬡',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>),
         name: 'Functional Psychiatry',
         tagline: 'Root cause. Not just symptom.',
         accentColor: '#8b5cf6',
@@ -62,7 +62,7 @@ const therapiesData = [
     },
     {
         id: 'art-therapy',
-        icon: '◐',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" /></svg>),
         name: 'Art & Expressive Therapy',
         tagline: 'Create what words cannot hold.',
         accentColor: '#f59e0b',
@@ -81,7 +81,7 @@ const therapiesData = [
     },
     {
         id: 'biofeedback',
-        icon: '◉',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>),
         name: 'Biofeedback & Neurofeedback',
         tagline: 'See your nervous system. Train it.',
         accentColor: '#06b6d4',
@@ -100,7 +100,7 @@ const therapiesData = [
     },
     {
         id: 'narrative',
-        icon: '◇',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /><line x1="8" y1="7" x2="16" y2="7" /><line x1="8" y1="11" x2="14" y2="11" /></svg>),
         name: 'Narrative Medicine',
         tagline: 'Your story is not your diagnosis.',
         accentColor: '#ec4899',
@@ -119,7 +119,7 @@ const therapiesData = [
     },
     {
         id: 'psychedelic-integration',
-        icon: '✧',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>),
         name: 'Psychedelic Integration',
         tagline: 'Ground the extraordinary.',
         accentColor: '#a855f7',
@@ -138,7 +138,7 @@ const therapiesData = [
     },
     {
         id: 'relational',
-        icon: '◬',
+        icon: (<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>),
         name: 'Relational Therapy',
         tagline: 'Healing happens between us.',
         accentColor: '#10b981',
@@ -217,7 +217,7 @@ const Therapies = () => {
                             style={{ '--orb-accent': therapy.accentColor }}
                         >
                             <div className="orb-glow"></div>
-                            <span className="orb-icon">{therapy.icon}</span>
+                            <div className="orb-icon">{therapy.icon}</div>
                             <span className="orb-name">{therapy.name}</span>
                             <span className="orb-tagline">{therapy.tagline}</span>
                         </div>
@@ -231,7 +231,7 @@ const Therapies = () => {
                         <button className="modal-close-btn" onClick={() => setSelectedTherapy(null)} aria-label="Close modal">✕</button>
 
                         <div className="therapy-modal-header">
-                            <span className="therapy-modal-icon" style={{ color: selectedTherapy.accentColor }}>{selectedTherapy.icon}</span>
+                            <div className="therapy-modal-icon" style={{ color: selectedTherapy.accentColor }}>{selectedTherapy.icon}</div>
                             <h2 className="article-title">{selectedTherapy.name}</h2>
                             <p className="therapy-modal-tagline">{selectedTherapy.tagline}</p>
                         </div>

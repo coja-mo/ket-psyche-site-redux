@@ -255,3 +255,33 @@
   background: var(--text-primary);
   color: var(--bg-main);
 }
+
+/* ── Theme Toggle ─────────────────────────── */
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-glow);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme='light'] .theme-toggle {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .theme-toggle:hover {
+  border-color: var(--accent-glow);
+  background: rgba(79, 70, 229, 0.08);
+}
