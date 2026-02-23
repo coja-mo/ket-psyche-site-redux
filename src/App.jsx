@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
+import Introduction from './components/Introduction';
 import About from './components/About';
 import Programs from './components/Programs';
 import Therapies from './components/Therapies';
@@ -133,6 +134,7 @@ function App() {
         <Route path="/" element={
           <main style={{ flex: 1 }}>
             <Hero />
+            <Introduction />
             <About />
             <Programs />
             <Therapies />
