@@ -2,7 +2,7 @@
     padding: 8rem 2rem;
     background-color: var(--bg-main);
     position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
 }
 
 .intro-container {
@@ -10,8 +10,10 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 5rem;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 900px) {
@@ -23,63 +25,70 @@
 
 .intro-image-wrapper {
     position: relative;
-    border-radius: 4px;
-    /* Slight rounding to match the hard, film-like square crop typical of the reference */
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    aspect-ratio: 1 / 1;
-    /* Keep it square like the reference */
+    padding: 1.5rem;
+    /* Frame effect inside the glass panel */
 }
 
 .intro-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 12px;
     display: block;
     filter: brightness(0.9) contrast(1.1);
-    /* Enhance the ethereal vibe */
 }
 
 .intro-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: flex-start;
+}
+
+.intro-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-family: var(--font-heading);
+}
+
+.intro-text-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 1.5rem;
 }
 
 .intro-text {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     line-height: 1.8;
     color: var(--text-secondary);
     font-weight: 300;
 }
 
-.intro-btn {
-    align-self: flex-start;
-    background-color: #F8CA4D;
-    /* The warm yellow from the screenshot */
-    color: #111;
-    font-weight: 600;
-    padding: 1rem 2rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border-radius: 2px;
-}
-
-.intro-btn:hover {
-    background-color: #ffd86b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(248, 202, 77, 0.3);
+.intro-glow {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--accent-warm) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: -20%;
+    transform: translateY(-50%);
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(80px);
 }
 
 /* Light Mode Overrides */
-[data-theme='light'] .intro-section {
-    border-color: rgba(0, 0, 0, 0.05);
-}
-
 [data-theme='light'] .intro-image-wrapper {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .intro-text-blocks {
+    border-color: rgba(0, 0, 0, 0.1);
 }

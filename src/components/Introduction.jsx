@@ -46,24 +46,28 @@ const Introduction = () => {
     }, []);
 
     return (
+    return (
         <section className="intro-section" ref={containerRef}>
-            <div className="intro-container">
+            <div className="container intro-container">
 
-                <div className="intro-image-wrapper">
+                <div className="intro-image-wrapper glass-panel">
                     <img src={introImage} alt="Ethereal glowing silhouettes representing the psyche" className="intro-image" />
                 </div>
 
                 <div className="intro-content">
-                    <p className="intro-text">
-                        At Sacred Psyche, we invite you to step into a world where the mind is not just understood — it is revered. This is a haven for seekers, a quiet rebellion against the noise of the everyday. Here, we explore the untold depths of the psyche with intention, beauty, and care.
-                    </p>
-                    <p className="intro-text">
-                        We offer an experience that moves beyond traditional therapy — an immersive journey into the symbolic, the spiritual, and the unseen. Each session, each space, each story we hold is designed to reflect the sacredness of the human experience.
-                    </p>
-                    <Link to="/#programs" className="intro-btn">View Details</Link>
+                    <h2 className="gradient-text intro-title">A Journey Beyond the Surface</h2>
+                    <div className="intro-text-blocks">
+                        <p className="intro-text">
+                            Welcome to a sanctuary where traditional models of healing are elevated. Often, the psychiatric system pathologizes our most profound struggles. At Sacred Psyche, we offer a quiet rebellion against mere symptom-management—a space where your inner world is met with deep reverence and clinical rigor.
+                        </p>
+                        <p className="intro-text">
+                            We guide you beyond the surface, blending evidence-based therapies with the soulful art of meaning-making. This is an immersive journey into the somatic and the spiritual, where every treatment plan is meticulously designed to honor the complexity and sacredness of your unique story.
+                        </p>
+                    </div>
                 </div>
 
             </div>
+            <div className="glow-orb intro-glow"></div>
         </section>
     );
 };
