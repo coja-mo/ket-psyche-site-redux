@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
+import About from './components/About';
 import Programs from './components/Programs';
 import Therapies from './components/Therapies';
-import About from './components/About';
 import Library from './components/Library';
 import Contact from './components/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import ProgramDetails from './components/ProgramDetails';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -116,14 +117,15 @@ function App() {
         <Route path="/" element={
           <main style={{ flex: 1 }}>
             <Hero />
+            <About />
             <Programs />
             <Therapies />
-            <About />
             <Library />
             <Contact />
           </main>
         } />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/programs/:id" element={<ProgramDetails />} />
       </Routes>
     </div>
   );

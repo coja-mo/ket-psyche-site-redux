@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import './Programs.css';
 
-const programData = [
+export const programData = [
     {
         id: 'full-day',
         title: 'Full Day Treatment',
@@ -91,7 +92,6 @@ const programData = [
 
 const Programs = () => {
     const containerRef = useRef(null);
-    const [selectedProgram, setSelectedProgram] = useState(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -111,27 +111,6 @@ const Programs = () => {
         return () => ctx.revert();
     }, []);
 
-    // Handle pressing escape to close modal
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') {
-                setSelectedProgram(null);
-            }
-        };
-
-        if (selectedProgram) {
-            document.body.style.overflow = 'hidden';
-            window.addEventListener('keydown', handleKeyDown);
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-
-        return () => {
-            document.body.style.overflow = 'auto';
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [selectedProgram]);
-
     return (
         <section id="programs" className="programs-section" ref={containerRef}>
             <div className="container">
@@ -142,12 +121,11 @@ const Programs = () => {
 
                 <div className="programs-grid">
                     {programData.map((program) => (
-                        <div
+                        <Link
+                            to={`/programs/${program.id}`}
                             key={program.id}
                             className="program-card glass-panel subtle-glow"
-                            onClick={() => setSelectedProgram(program)}
-                            role="button"
-                            tabIndex={0}
+                            style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}
                         >
                             <div className={`card-indicator ${program.indicator}`}></div>
                             <h3>{program.title}</h3>
@@ -157,43 +135,11 @@ const Programs = () => {
                                     <li key={idx}>{highlight}</li>
                                 ))}
                             </ul>
-                            <button className="btn-link">Explore Details →</button>
-                        </div>
+                            <div className="btn-link" style={{ marginTop: 'auto' }}>Explore Details →</div>
+                        </Link>
                     ))}
                 </div>
             </div>
-
-            {/* Re-using the library modal styling structure for consistency */}
-            {selectedProgram && (
-                <div className="library-modal-overlay program-modal-overlay" onClick={() => setSelectedProgram(null)}>
-                    <div className="library-modal-content program-modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close-btn" onClick={() => setSelectedProgram(null)} aria-label="Close modal">✕</button>
-
-                        <div className="article-header">
-                            <div className={`card-indicator ${selectedProgram.indicator}`}></div>
-                            <h2 className="article-title">{selectedProgram.title}</h2>
-                        </div>
-
-                        <div className="article-body">
-                            <p className="program-overview-lead">{selectedProgram.details.overview}</p>
-
-                            <h4 className="gradient-text gradient-accent-glow">Core Modalities</h4>
-                            <div className="modalities-list">
-                                {selectedProgram.details.therapies.map((therapy, idx) => (
-                                    <div key={idx} className="modality-item">
-                                        <strong>{therapy.name}</strong>
-                                        <p>{therapy.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="article-footer">
-                            <button className="btn-secondary" onClick={() => setSelectedProgram(null)}>Close Details</button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </section>
     );
 };
