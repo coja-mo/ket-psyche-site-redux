@@ -7,7 +7,7 @@ import Library from './components/Library';
 import Contact from './components/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ProgramDetails from './components/ProgramDetails';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -16,6 +16,22 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('sp-theme') || 'dark';
   });
+  const location = useLocation();
+
+  // Handle hash scrolling on route change
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
