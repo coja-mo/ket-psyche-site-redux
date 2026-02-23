@@ -95,7 +95,7 @@
 }
 
 .hero-title {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.04em;
@@ -118,6 +118,23 @@
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
 }
 
 .btn-primary {

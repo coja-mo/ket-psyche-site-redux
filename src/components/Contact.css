@@ -4,6 +4,12 @@
     background-color: var(--bg-main);
 }
 
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 5rem 1rem 0;
+    }
+}
+
 .contact-wrapper {
     display: flex;
     flex-direction: column;

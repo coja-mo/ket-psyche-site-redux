@@ -5,6 +5,12 @@
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .about-section.expanded {
+        padding: 5rem 1rem;
+    }
+}
+
 .about-intro {
     text-align: center;
     max-width: 800px;
@@ -53,6 +59,10 @@
     .about-interactive {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .about-intro {
+        margin: 0 auto 3rem;
     }
 }
 
