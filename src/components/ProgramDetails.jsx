@@ -59,8 +59,8 @@ const ProgramDetails = () => {
                     </section>
                 </div>
 
-                <div className="text-center mb-12">
-                    <Link to="/#programs" className="back-link" style={{ marginBottom: 0 }}>
+                <div className="text-center" style={{ margin: '4rem 0' }}>
+                    <Link to="/#programs" className="back-link" style={{ marginBottom: 0, fontSize: '1.1rem' }}>
                         ← Return to Programs
                     </Link>
                 </div>
