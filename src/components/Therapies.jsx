@@ -162,21 +162,24 @@ const Therapies = () => {
     const [selectedTherapy, setSelectedTherapy] = useState(null);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.therapy-orb', {
-                y: 30,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 85%',
-                }
-            });
-        }, containerRef);
+        const orbs = containerRef.current?.querySelectorAll('.therapy-orb');
+        if (!orbs) return;
 
-        return () => ctx.revert();
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('orb-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: '50px' }
+        );
+
+        orbs.forEach((orb) => observer.observe(orb));
+
+        return () => observer.disconnect();
     }, []);
 
     useEffect(() => {
