@@ -191,6 +191,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .offering-badge {
@@ -205,4 +206,5 @@
 .text-small {
     font-size: 0.9rem;
     color: var(--text-secondary);
+    margin-top: 0.5rem;
 }
