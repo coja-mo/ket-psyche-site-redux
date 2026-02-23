@@ -5,9 +5,17 @@ import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const insuranceProviders = [
+    'Blue Cross Blue Shield', 'Aetna', 'Cigna', 'United Healthcare',
+    'Harvard Pilgrim', 'Tufts Health Plan', 'Mass Health / MassHealth ACO',
+    'Medicare', 'Beacon Health', 'Optum / UBH', 'Magellan',
+    'Humana', 'AllWays Health Partners'
+];
+
 const Contact = () => {
     const containerRef = useRef(null);
     const [formStatus, setFormStatus] = useState('idle');
+    const [insuranceStatus, setInsuranceStatus] = useState('idle');
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -41,8 +49,13 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormStatus('submitting');
-        // Simulate form submission
         setTimeout(() => setFormStatus('success'), 1500);
+    };
+
+    const handleInsuranceSubmit = (e) => {
+        e.preventDefault();
+        setInsuranceStatus('submitting');
+        setTimeout(() => setInsuranceStatus('success'), 1500);
     };
 
     return (
@@ -98,6 +111,73 @@ const Contact = () => {
                                     </div>
                                     <button type="submit" className="btn-primary submit-btn" disabled={formStatus === 'submitting'}>
                                         {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+                                    </button>
+                                </form>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Insurance Verification Section */}
+                    <div className="insurance-section glass-panel subtle-glow">
+                        <div className="insurance-info">
+                            <h3 className="gradient-text gradient-accent-cool">Insurance & Coverage</h3>
+                            <p className="insurance-lead">We accept most major insurance plans and are committed to making care accessible. We will work with you to navigate your coverage and benefits.</p>
+
+                            <div className="insurance-providers">
+                                <h4>Accepted Providers</h4>
+                                <div className="provider-tags">
+                                    {insuranceProviders.map((provider, idx) => (
+                                        <span key={idx} className="provider-tag">{provider}</span>
+                                    ))}
+                                </div>
+                                <p className="insurance-note">Don't see your provider? Contact us — we may still be able to help through out-of-network benefits or sliding scale options.</p>
+                            </div>
+                        </div>
+
+                        <div className="insurance-form-side">
+                            <h4>Verify Your Coverage</h4>
+                            {insuranceStatus === 'success' ? (
+                                <div className="form-success">
+                                    <h3 className="gradient-text gradient-accent-cool">Verification Submitted</h3>
+                                    <p>Thank you! Our team will verify your benefits and contact you within 1-2 business days.</p>
+                                    <button className="btn-secondary" onClick={() => setInsuranceStatus('idle')}>Submit Another</button>
+                                </div>
+                            ) : (
+                                <form className="contact-form" onSubmit={handleInsuranceSubmit}>
+                                    <div className="form-group row">
+                                        <div className="input-wrap">
+                                            <label htmlFor="ins-first">First Name</label>
+                                            <input type="text" id="ins-first" required placeholder="First name" />
+                                        </div>
+                                        <div className="input-wrap">
+                                            <label htmlFor="ins-last">Last Name</label>
+                                            <input type="text" id="ins-last" required placeholder="Last name" />
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <div className="input-wrap">
+                                            <label htmlFor="ins-dob">Date of Birth</label>
+                                            <input type="date" id="ins-dob" required />
+                                        </div>
+                                        <div className="input-wrap">
+                                            <label htmlFor="ins-phone">Phone Number</label>
+                                            <input type="tel" id="ins-phone" required placeholder="(555) 123-4567" />
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="ins-email">Email Address</label>
+                                        <input type="email" id="ins-email" required placeholder="Your email" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="ins-member">Member ID</label>
+                                        <input type="text" id="ins-member" required placeholder="Insurance member ID" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="ins-notes">Additional Notes</label>
+                                        <textarea id="ins-notes" rows="3" placeholder="Any additional information about your coverage"></textarea>
+                                    </div>
+                                    <button type="submit" className="btn-primary submit-btn" disabled={insuranceStatus === 'submitting'}>
+                                        {insuranceStatus === 'submitting' ? 'Submitting...' : 'Verify My Coverage'}
                                     </button>
                                 </form>
                             )}

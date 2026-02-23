@@ -206,6 +206,87 @@ textarea {
     }
 }
 
+/* ── Insurance Section ─────────────────────────── */
+.insurance-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem;
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(30, 30, 35, 0.4) 0%, rgba(20, 20, 25, 0.6) 100%);
+}
+
+@media (max-width: 900px) {
+    .insurance-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+}
+
+.insurance-info h3 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.insurance-lead {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.insurance-providers h4 {
+    font-size: 1rem;
+    color: var(--accent-cool);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.provider-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.provider-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(20, 184, 166, 0.08);
+    border: 1px solid rgba(20, 184, 166, 0.15);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.insurance-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.insurance-form-side h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+}
+
+[data-theme='light'] .insurance-section {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='light'] .provider-tag {
+    background: rgba(13, 148, 136, 0.08);
+    border-color: rgba(13, 148, 136, 0.2);
+}
+
 /* Footer (Original) */
 .footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);

@@ -93,6 +93,10 @@
     min-height: 220px;
 }
 
+.therapy-orb>* {
+    flex-shrink: 0;
+}
+
 .therapy-orb:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: var(--orb-accent);
@@ -108,7 +112,10 @@
 .therapy-orb:hover .orb-icon {
     transform: scale(1.3);
     color: var(--orb-accent);
-    text-shadow: 0 0 20px var(--orb-accent);
+}
+
+.therapy-orb:hover .orb-icon svg {
+    filter: drop-shadow(0 0 10px var(--orb-accent));
 }
 
 /* Radial glow behind each orb */
@@ -129,11 +136,22 @@
 .orb-icon {
     position: relative;
     z-index: 1;
-    font-size: 2.2rem;
+    width: 44px;
+    height: 44px;
     color: var(--text-secondary);
     margin-bottom: 1rem;
     transition: all 0.4s ease;
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.orb-icon svg {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    transition: filter 0.4s ease;
 }
 
 .orb-name {
@@ -197,9 +215,15 @@
 }
 
 .therapy-modal-icon {
-    font-size: 3rem;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
+}
+
+.therapy-modal-icon svg {
+    width: 48px;
+    height: 48px;
     filter: drop-shadow(0 0 15px currentColor);
 }
 
