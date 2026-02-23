@@ -56,6 +56,31 @@
     gap: 2rem;
 }
 
+.hero-eye-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--text-primary);
+    opacity: 0.4;
+    margin-bottom: -1rem;
+    animation: slowBlink 8s ease-in-out infinite;
+}
+
+@keyframes slowBlink {
+
+    0%,
+    45%,
+    55%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scaleY(0.1);
+        opacity: 0.2;
+    }
+}
+
 .hero-badge {
     display: inline-block;
     padding: 0.5rem 1.2rem;

@@ -51,16 +51,22 @@ const Hero = () => {
             <div className="hero-glow hero-glow-2"></div>
 
             <div className="container hero-container">
-                <div className="hero-badge">Clinical Depth. Holistic Insight.</div>
+                <div className="hero-eye-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </div>
+
+                <div className="hero-badge">Storytelling. Myth-Making. Soul-Tending.</div>
 
                 <h1 className="hero-title">
-                    <div className="hero-title-line gradient-text">Profound Care.</div>
-                    <div className="hero-title-line">Transformative Path.</div>
+                    <div className="hero-title-line gradient-text">A Place Beyond</div>
+                    <div className="hero-title-line">The Surface.</div>
                 </h1>
 
                 <p className="hero-subtitle">
-                    Sacred Psyche balances evidence-based clinical structure with intentional healing practices.
-                    A space for authentic, sustainable growth.
+                    Sacred Psyche honors the wisdom of both ancient ritual and modern science. We offer a haven for seekers—a space where your narrative is not pathologized, but sacredly witnessed.
                 </p>
 
                 <div className="hero-cta-group hero-cta">
