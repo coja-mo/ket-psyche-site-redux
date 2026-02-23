@@ -5,11 +5,19 @@ import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const insuranceProviders = [
-    'Blue Cross Blue Shield', 'Aetna', 'Cigna', 'United Healthcare',
-    'Harvard Pilgrim', 'Tufts Health Plan', 'Mass Health / MassHealth ACO',
-    'Medicare', 'Beacon Health', 'Optum / UBH', 'Magellan',
-    'Humana', 'AllWays Health Partners'
+const insuranceLogos = [
+    { name: 'Aetna', src: '/assets/insurance/aetna-300x120.png' },
+    { name: 'Anthem', src: '/assets/insurance/anthem-300x120.png' },
+    { name: 'BlueCross BlueShield', src: '/assets/insurance/bcbs-300x120.png' },
+    { name: 'Beacon Health', src: '/assets/insurance/beacon-300x120.png' },
+    { name: 'Cigna', src: '/assets/insurance/cigna-300x120.png' },
+    { name: 'ComPsych', src: '/assets/insurance/compsych-300x120.png' },
+    { name: 'Harvard Pilgrim', src: '/assets/insurance/harvard-pilgrim-300x120.png' },
+    { name: 'Highmark', src: '/assets/insurance/highmark-300x120.png' },
+    { name: 'Magellan Health', src: '/assets/insurance/magellan-300x120.png' },
+    { name: 'Meritain Health', src: '/assets/insurance/meritain-300x120.png' },
+    { name: 'MultiPlan', src: '/assets/insurance/multiplan-300x120.png' },
+    { name: 'UMR', src: '/assets/insurance/UMR-300x120.png' }
 ];
 
 const Contact = () => {
@@ -125,12 +133,14 @@ const Contact = () => {
 
                             <div className="insurance-providers">
                                 <h4>Accepted Providers</h4>
-                                <div className="provider-tags">
-                                    {insuranceProviders.map((provider, idx) => (
-                                        <span key={idx} className="provider-tag">{provider}</span>
+                                <div className="provider-logo-grid">
+                                    {insuranceLogos.map((provider, idx) => (
+                                        <div key={idx} className="provider-logo-wrap">
+                                            <img src={provider.src} alt={`${provider.name} logo`} className="provider-logo" />
+                                        </div>
                                     ))}
                                 </div>
-                                <p className="insurance-note">Don't see your provider? Contact us — we may still be able to help through out-of-network benefits or sliding scale options.</p>
+                                <p className="insurance-note">Don't see your provider? Contact us — we may still be able to help through out-of-network benefits.</p>
                             </div>
                         </div>
 

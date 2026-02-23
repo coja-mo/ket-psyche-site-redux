@@ -246,22 +246,55 @@ textarea {
     margin-bottom: 1rem;
 }
 
-.provider-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
+.provider-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
 }
 
-.provider-tag {
-    padding: 0.5rem 1rem;
-    background: rgba(20, 184, 166, 0.08);
-    border: 1px solid rgba(20, 184, 166, 0.15);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    font-weight: 400;
-    white-space: nowrap;
+@media (max-width: 600px) {
+    .provider-logo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+.provider-logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+.provider-logo-wrap:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.provider-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 45px;
+    object-fit: contain;
+    /* Since logos are likely dark-on-transparent or colored, we invert/filter them for dark mode if they are dark text. 
+       Assuming the original site's logos were white or inverted for the dark background. 
+       Let's use a subtle contrast boost but keep their original look if they are pre-formatted for dark UI. */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+[data-theme='light'] .provider-logo-wrap {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .provider-logo {
+    filter: invert(1) brightness(0.2);
+    /* Invert white logos so they are dark grey on light background */
 }
 
 .insurance-note {
