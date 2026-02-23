@@ -1,20 +1,36 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Contact.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
     const containerRef = useRef(null);
+    const [formStatus, setFormStatus] = useState('idle');
 
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from('.contact-box', {
-                scale: 0.95,
+                y: 40,
                 opacity: 0,
                 duration: 0.8,
                 ease: 'power3.out',
                 scrollTrigger: {
-                    trigger: containerRef.current,
+                    trigger: '.contact-section',
                     start: 'top 80%',
+                }
+            });
+
+            gsap.from('.map-container', {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.contact-section',
+                    start: 'top 60%',
                 }
             });
         }, containerRef);
@@ -22,26 +38,84 @@ const Contact = () => {
         return () => ctx.revert();
     }, []);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormStatus('submitting');
+        // Simulate form submission
+        setTimeout(() => setFormStatus('success'), 1500);
+    };
+
     return (
-        <section className="contact-section" ref={containerRef}>
+        <section id="contact" className="contact-section" ref={containerRef}>
             <div className="container">
-                <div className="contact-box glass-panel subtle-glow">
-                    <div className="contact-content">
-                        <h2 className="gradient-text gradient-accent-warm">Ready to Transform?</h2>
-                        <p>
-                            Whether you need intensive stabilization or flexible support, we're here to help you navigate
-                            the path forward. Let's find the right structure for your healing.
-                        </p>
-                        <div className="contact-actions">
-                            <button className="btn-primary">Schedule a Consultation</button>
-                            <div className="contact-info">
-                                <span>Call Us:</span>
-                                <a href="tel:617-419-0011" className="phone-link">(617) 419-0011</a>
+                <div className="contact-wrapper">
+                    {/* Contact Info & Form */}
+                    <div className="contact-box glass-panel subtle-glow">
+                        <div className="contact-info-side">
+                            <h2 className="gradient-text gradient-accent-warm">Ready to Transform?</h2>
+                            <p className="contact-lead">
+                                Whether you need intensive stabilization or flexible support, we're here to hold space for your healing journey. Reach out to schedule a consultation.
+                            </p>
+
+                            <div className="contact-details">
+                                <div className="detail-item">
+                                    <span className="detail-label">Call Us</span>
+                                    <a href="tel:617-419-0011" className="detail-value phone-link">(617) 419-0011</a>
+                                </div>
+                                <div className="detail-item">
+                                    <span className="detail-label">Location</span>
+                                    <span className="detail-value">60 Leo M Birmingham Parkway<br />Suite 102<br />Brighton, MA</span>
+                                </div>
                             </div>
                         </div>
+
+                        <div className="contact-form-side">
+                            {formStatus === 'success' ? (
+                                <div className="form-success">
+                                    <h3 className="gradient-text gradient-accent-cool">Message Received</h3>
+                                    <p>Thank you for reaching out. A member of our care team will connect with you shortly.</p>
+                                    <button className="btn-secondary" onClick={() => setFormStatus('idle')}>Send Another Message</button>
+                                </div>
+                            ) : (
+                                <form className="contact-form" onSubmit={handleSubmit}>
+                                    <div className="form-group row">
+                                        <div className="input-wrap">
+                                            <label htmlFor="name">Name</label>
+                                            <input type="text" id="name" required placeholder="Your full name" />
+                                        </div>
+                                        <div className="input-wrap">
+                                            <label htmlFor="phone">Phone</label>
+                                            <input type="tel" id="phone" placeholder="(Optional) Best number to reach you" />
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="email">Email</label>
+                                        <input type="email" id="email" required placeholder="Your email address" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="message">Message</label>
+                                        <textarea id="message" required rows="4" placeholder="How can we support you?"></textarea>
+                                    </div>
+                                    <button type="submit" className="btn-primary submit-btn" disabled={formStatus === 'submitting'}>
+                                        {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+                                    </button>
+                                </form>
+                            )}
+                        </div>
                     </div>
-                    <div className="contact-decoration">
-                        <div className="glow-orb"></div>
+
+                    {/* Simple Google Map Embed */}
+                    <div className="map-container glass-panel">
+                        <iframe
+                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=60%20Leo%20M%20Birmingham%20Parkway,+Suite%20102+Brighton,+MA+(Sacred%20Psyche)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Sacred Psyche Location"
+                        ></iframe>
                     </div>
                 </div>
             </div>
